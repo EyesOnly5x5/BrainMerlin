@@ -63,30 +63,4 @@
         <item>0,0,0,0,0</item>
     </string-array>
 
-    <integer-array name="color6">
-        <item>@color/color1</item>
-        <item>@color/color2</item>
-        <item>@color/color3</item>
-        <item>@color/color4</item>
-        <item>@color/color5</item>
-        <item>@color/color6</item>
-    </integer-array>
-
-    <integer-array name="color8">
-        <item>@color/color1</item>
-        <item>@color/color2</item>
-        <item>@color/color3</item>
-        <item>@color/color4</item>
-        <item>@color/color5</item>
-        <item>@color/color6</item>
-        <item>@color/color7</item>
-        <item>@color/color8</item>
-    </integer-array>
-
-    <integer-array name="nonogram">
-    </integer-array>
-
-    <integer-array name="Memory">
-    </integer-array>
-
 </resources>
