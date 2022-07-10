@@ -15,7 +15,7 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginTop="-0dp"
-        android:background="#ACACAC"
+        android:background="@drawable/hintergrund"
         android:gravity="center"
         android:src="@drawable/ic_brain" />
 
