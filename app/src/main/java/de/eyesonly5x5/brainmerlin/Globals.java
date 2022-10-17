@@ -147,15 +147,15 @@ public class Globals  extends ListActivity {
         int Buttys = (wer==0)?9:(wer==1)?16:(wer==2)?25:(wer==3)?anzahlButtons():(wer==4)?100:(wer>=5)?Anzahl*Anzahl:0;
         int[] ret = new int[Buttys];
 
-        if( wer < 3 ){
+        /* if( wer < 3 ){
             for (int i = 0; i < ret.length; i++) {
                 ret[i] = myContext.getResources().getIdentifier("b"+(i+1), "id", myContext.getPackageName());
             }
-        } else {
+        } else {*/
             for (int i = 0; i < ret.length; i++) {
                 ret[i] = (i + 1);
             }
-        }
+        // }
         BUTTON_IDS = ret;
         maxFelder = BUTTON_IDS.length;
         return (BUTTON_IDS);

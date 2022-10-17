@@ -2,6 +2,7 @@ package de.eyesonly5x5.brainmerlin;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,29 +16,40 @@ public class ZauberActivity extends AppCompatActivity {
     Globals daten = Globals.getInstance();
     byte[][] Tast = daten.getTast();
     int[] BUTTON_IDS;
+    int anzahlButtZeile;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final int[] oldID = {-1};
+        int margin = 2;
         super.onCreate(savedInstanceState);
         setContentView(daten.getActivity());
         // daten.setMyContext( this );
         BUTTON_IDS = daten.getButtonIDs();
+        anzahlButtZeile = (int)Math.sqrt(BUTTON_IDS.length);
         TextView AusGtmp = findViewById(R.id.Kopf);
         AusGtmp.setTextSize( daten.getMetrics().pxToDp((int)(AusGtmp.getTextSize()*daten.getMetrics().getFaktor())) );
 
+        Log.d("Debuggy:", "Width:"+ daten.getMetrics().getWidthPixels() );
+        Log.d("Debuggy:", "Height:"+ daten.getMetrics().getHeightPixels() );
+        Log.d("Debuggy:", "Density:"+ daten.getMetrics().getDensity() );
+        Log.d("Debuggy:", "DensityDPI:"+ daten.getMetrics().getDensityDpi() );
+        Log.d("Debuggy:", "minPixels:"+ daten.getMetrics().getMinPixels() );
+        Log.d("Debuggy:", "buttonSize:"+ anzahlButtZeile );
+
         for(int id : BUTTON_IDS) {
             Button button;
+            /*
             if( BUTTON_IDS.length <= 25 ) {
                 button = findViewById(id);
                 if( BUTTON_IDS.length == 25 ){
-                    button.getLayoutParams().width = 60;
-                    button.getLayoutParams().height = 80;
+                    //button.getLayoutParams().width = 60;
+                    //button.getLayoutParams().height = 80;
                 }
             } else {
-                button = addbtn( id );
-            }
+            } */
+            button = addbtn( id, margin );
             button.setOnClickListener(view -> {
                 if( !daten.getGewonnen()) {
                     TextView AusG = daten.getAusgabe();
@@ -57,10 +69,10 @@ public class ZauberActivity extends AppCompatActivity {
                     }
                 }
             });
-            // button.getLayoutParams().width *= daten.getMetrics().getFaktor();
-            // button.getLayoutParams().height *= daten.getMetrics().getFaktor();
-            button.getLayoutParams().width = daten.getMetrics().getButtonSize( BUTTON_IDS.length );
-            button.getLayoutParams().height = daten.getMetrics().getButtonSize( BUTTON_IDS.length );
+            RelativeLayout.LayoutParams lP = (RelativeLayout.LayoutParams) button.getLayoutParams();
+            lP.setMargins( margin, margin, margin, margin);
+            lP.width = daten.getMetrics().getButtonSize( (int)Math.sqrt( BUTTON_IDS.length ), margin );
+            lP.height = daten.getMetrics().getButtonSize( (int)Math.sqrt( BUTTON_IDS.length ), margin );
             daten.addButton(button);
         }
     }
@@ -86,23 +98,24 @@ public class ZauberActivity extends AppCompatActivity {
     }
 
     @SuppressLint("ResourceAsColor")
-    private Button addbtn( int id) {
+    private Button addbtn( int id, int margin ) {
         RelativeLayout rLbutty = (RelativeLayout) findViewById(R.id.butty);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(daten.getButy2(), daten.getButy2());
-        layoutParams.setMargins(5, 5, 0, 0);
+        layoutParams.setMargins(margin, margin, margin, margin);
 
         Button button = new Button(this);
+        Log.d("Debuggy:", "ButtID:"+id);
         if( id == 1 ) {
             // nixs
-        } else if ( id < 11 ){
+        } else if ( id < (anzahlButtZeile+1) ){
             layoutParams.addRule(RelativeLayout.END_OF, (id-1) );
             layoutParams.addRule(RelativeLayout.RIGHT_OF, (id-1) );
-        } else if ( id % 10 == 1 ){
-            layoutParams.addRule(RelativeLayout.BELOW, (id-10 ) );
+        } else if ( id % anzahlButtZeile == 1 ){
+            layoutParams.addRule(RelativeLayout.BELOW, (id-anzahlButtZeile ) );
         } else {
             layoutParams.addRule(RelativeLayout.END_OF, (id-1) );
             layoutParams.addRule(RelativeLayout.RIGHT_OF, (id-1) );
-            layoutParams.addRule(RelativeLayout.BELOW, (id-10 ) );
+            layoutParams.addRule(RelativeLayout.BELOW, (id-anzahlButtZeile ) );
         }
         button.setTag("" + id);
         button.setId( id );

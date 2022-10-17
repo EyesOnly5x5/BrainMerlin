@@ -29,9 +29,15 @@ public class MyDisplay {
     public int getMaxPixels(){
         return( (metrics.widthPixels < metrics.heightPixels) ? metrics.heightPixels : metrics.widthPixels );
     }
-    public int getButtonSize( int lang ){
-        return( (int) (getMinPixels() / (Math.sqrt(lang)+2)) );
+
+    public int getButtonSize( int lang, int margin ){
+        return( getButtonSize( lang, margin, 20 ) );
     }
+
+    public int getButtonSize( int lang, int margin, int rand ){
+        return( (int) ((getMinPixels()-rand-(margin*lang)) / lang) );
+    }
+
     public void setWoMischen( String wert ){ woMischen = wert; }
     public String getWoMischen( ){ return( woMischen ); }
 
