@@ -31,24 +31,8 @@ public class ZauberActivity extends AppCompatActivity {
         TextView AusGtmp = findViewById(R.id.Kopf);
         AusGtmp.setTextSize( daten.getMetrics().pxToDp((int)(AusGtmp.getTextSize()*daten.getMetrics().getFaktor())) );
 
-        Log.d("Debuggy:", "Width:"+ daten.getMetrics().getWidthPixels() );
-        Log.d("Debuggy:", "Height:"+ daten.getMetrics().getHeightPixels() );
-        Log.d("Debuggy:", "Density:"+ daten.getMetrics().getDensity() );
-        Log.d("Debuggy:", "DensityDPI:"+ daten.getMetrics().getDensityDpi() );
-        Log.d("Debuggy:", "minPixels:"+ daten.getMetrics().getMinPixels() );
-        Log.d("Debuggy:", "buttonSize:"+ anzahlButtZeile );
-
         for(int id : BUTTON_IDS) {
             Button button;
-            /*
-            if( BUTTON_IDS.length <= 25 ) {
-                button = findViewById(id);
-                if( BUTTON_IDS.length == 25 ){
-                    //button.getLayoutParams().width = 60;
-                    //button.getLayoutParams().height = 80;
-                }
-            } else {
-            } */
             button = addbtn( id, margin );
             button.setOnClickListener(view -> {
                 if( !daten.getGewonnen()) {
