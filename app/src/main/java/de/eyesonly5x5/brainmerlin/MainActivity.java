@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         Merlin.setOnClickListener(view -> {
             Merlin.setBackgroundColor(getResources().getColor(R.color.DarkRed));
-            daten.setActivity(R.layout.activity_merlin);
+            daten.setActivity(R.layout.activity_zauber);
             daten.setWoMischen( "Merlin" );
             daten.setGameData(getResources().getStringArray(R.array.Merlin));
             startActivity(new Intent(getApplicationContext(),ZauberActivity.class));
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         });
         Gandalf.setOnClickListener(view -> {
             Gandalf.setBackgroundColor(getResources().getColor(R.color.DarkRed));
-            daten.setActivity(R.layout.activity_gandalf);
+            daten.setActivity(R.layout.activity_zauber);
             daten.setWoMischen( "Gandalf" );
             daten.setGameData(getResources().getStringArray(R.array.Gandalf));
             startActivity(new Intent(getApplicationContext(),ZauberActivity.class));
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         });
         Harry.setOnClickListener(view -> {
             Harry.setBackgroundColor(getResources().getColor(R.color.DarkRed));
-            daten.setActivity(R.layout.activity_harry);
+            daten.setActivity(R.layout.activity_zauber);
             daten.setWoMischen( "Harry" );
             daten.setGameData(getResources().getStringArray(R.array.Harry));
             startActivity(new Intent(getApplicationContext(),ZauberActivity.class));
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         });
         Houdini.setOnClickListener(view -> {
             Houdini.setBackgroundColor(getResources().getColor(R.color.DarkRed));
-            daten.setActivity(R.layout.activity_houdini);
+            daten.setActivity(R.layout.activity_zauber);
             daten.setWoMischen( "Houdini" );
             daten.setGameData(getResources().getStringArray(R.array.Houdini));
             startActivity(new Intent(getApplicationContext(),ZauberActivity.class));

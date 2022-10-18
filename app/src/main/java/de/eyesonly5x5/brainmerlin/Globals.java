@@ -164,20 +164,10 @@ public class Globals  extends ListActivity {
     @SuppressLint("NonConstantResourceId")
     private int getWerWoWas(){
         int ret = -1;
-        switch( Activity ){
-            case R.layout.activity_merlin:
-                ret = 0;
-                break;
-            case R.layout.activity_gandalf:
-                ret = 1;
-                break;
-            case R.layout.activity_harry:
-                ret = 2;
-                break;
-            case R.layout.activity_houdini:
-                ret = 4;
-                break;
-        }
+        if( getWoMischen().equals("Merlin") ) ret = 0;
+        else if( getWoMischen().equals("Gandalf") ) ret = 1;
+        else if( getWoMischen().equals("Harry") ) ret = 2;
+        else if( getWoMischen().equals("Houdini") ) ret = 4;
         return( ret );
     }
 
