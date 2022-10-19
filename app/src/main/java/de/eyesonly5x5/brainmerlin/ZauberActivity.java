@@ -23,13 +23,16 @@ public class ZauberActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         final int[] oldID = {-1};
         int margin = 2;
+        int buttonSize;
         super.onCreate(savedInstanceState);
         setContentView(daten.getActivity());
         // daten.setMyContext( this );
         BUTTON_IDS = daten.getButtonIDs();
         anzahlButtZeile = (int)Math.sqrt(BUTTON_IDS.length);
         TextView AusGtmp = findViewById(R.id.Kopf);
+        AusGtmp.setText( daten.getWoMischen() );
         AusGtmp.setTextSize( daten.getMetrics().pxToDp((int)(AusGtmp.getTextSize()*daten.getMetrics().getFaktor())) );
+        buttonSize = daten.getMetrics().getButtonSize( (int)Math.sqrt( BUTTON_IDS.length ), margin ) * 13 / 16;
 
         for(int id : BUTTON_IDS) {
             Button button;
@@ -55,8 +58,8 @@ public class ZauberActivity extends AppCompatActivity {
             });
             RelativeLayout.LayoutParams lP = (RelativeLayout.LayoutParams) button.getLayoutParams();
             lP.setMargins( margin, margin, margin, margin);
-            lP.width = daten.getMetrics().getButtonSize( (int)Math.sqrt( BUTTON_IDS.length ), margin );
-            lP.height = daten.getMetrics().getButtonSize( (int)Math.sqrt( BUTTON_IDS.length ), margin );
+            lP.width = buttonSize;
+            lP.height = buttonSize;
             daten.addButton(button);
         }
     }
